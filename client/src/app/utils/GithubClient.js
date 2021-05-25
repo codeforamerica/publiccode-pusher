@@ -1,5 +1,6 @@
 function GithubClient(token) {
-    const TOKEN_SERVER = 'http://localhost:5000/token'
+    // TODO: make this be based on the .env.prod config that webpack.config.js grabs
+    const TOKEN_SERVER = 'https://us-central1-openphl-1177.cloudfunctions.net/token'
     let access_token = token
     const TARGET_BRANCH = 'Publiccode-Pusher/add-publiccode-yaml'
 
@@ -171,9 +172,9 @@ function getRandomString(len) {
 
     function genStr() {
         let uint16 = new Uint16Array(MAXLEN)
-    
+
         window.crypto.getRandomValues(uint16)
-    
+
         return Array
         .from(uint16, n => charCodeIsInSafeRange(n) && String.fromCharCode(n))
         .filter(char => char)
