@@ -26,7 +26,7 @@
     "clean": "gulp clean",
     "build": "gulp",
     "test": "mocha",
-    "deploy": "gcloud functions deploy token --source='src/http/token'"
+    "deploy": "gcloud functions deploy token --source='src/http/token' --trigger-http --runtime nodejs10"
   },
   "keywords": [],
   "author": "ckb",
