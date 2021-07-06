@@ -41,7 +41,7 @@ module.exports = () => {
           removeComments: true,
           useShortDoctype: true
         },
-        favicon: './src/asset/img/favicon-32x32.png'
+        favicon: './src/asset/img/cfa-favicon.png'
       }),
       new MiniCssExtractPlugin({
         filename: devMode ? '[name].css' : '[name].[hash].css',
