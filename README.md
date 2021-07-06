@@ -31,6 +31,10 @@ The backend is served at localhost:5000
 
 The above development server does not serve the frontend.
 
+To run the system locally:
+- client/src/app/utils/GithubClient.js: update TOKEN_SERVER to your local server (typically http://localhost:5000/token)
+- client/src/app/components/LoginForm.js: update CLIENT_ID (as of your CLIENT_ID of your github oauth app that you need to create)
+
 ## The frontend is now a React app
 
 I [appropriated it from Italia](https://github.com/italia/publiccode-editor), who maintain publiccode.yml
