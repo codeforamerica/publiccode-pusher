@@ -59,7 +59,7 @@ const fields = async () => {
       description:
         "This key contains the date at which the latest version was released. This date is mandatory if the software has been released at least once and thus the version number is present.",
       section: 2,
-      required: true,
+      required: false,
       widget: "date"
     },
     {
@@ -125,12 +125,12 @@ const fields = async () => {
       label: "Long Description",
       type: "string",
       description:
-        "This key contains a longer description of the software, between 500 and 10000 chars. It is meant to provide an overview of the capabilities of the software for a potential user. The audience for this text should be that of users of the software, not developers. You can think of this text as the description of the software that would be in its website (if the software had one).This description can contain some basic markdown: *italic*, **bold**, bullet points and [links](#).",
+        "This key contains a longer description of the software, between 200 and 10000 chars. It is meant to provide an overview of the capabilities of the software for a potential user. The audience for this text should be that of users of the software, not developers. You can think of this text as the description of the software that would be in its website (if the software had one).This description can contain some basic markdown: *italic*, **bold**, bullet points and [links](#).",
       section: 4,
       group: "description",
       widget: "editor",
-      required: true,
-      minLength: 500,
+      required: false,
+      minLength: 200,
       maxLength: 10000,
       cn: "block__item--full"
     },
@@ -362,6 +362,7 @@ const fields = async () => {
         enum: scopes,
       },
       section: 6,
+	  required: true,
       group: "intendedAudience",
       widget: "tags"
     },
