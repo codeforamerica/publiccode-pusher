@@ -64,7 +64,8 @@ The tests on the backend use [Mocha](https://mochajs.org/), [Sinon](https://sino
 
 Run the build step
 ```bash
-npm run build-prod
+cd client
+docker run --rm -it -v ${PWD}:/app -v /app/node_modules --workdir /app node:12 bash -c 'npm install && npm run build-prod'
 ```
 
 This builds to the `dist/` folder. You will then need to push the `dist/` folder to the `gh-pages` branch
