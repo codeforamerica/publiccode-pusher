@@ -1,0 +1,7 @@
+[holomapping]
+root = "client"
+files = [
+    "**",
+
+    "!dist/**",
+]
