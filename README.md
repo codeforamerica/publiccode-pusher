@@ -77,6 +77,7 @@ In the master branch, run the build step:
 
 ```bash
 cd client
+rm -r dist
 SOURCE_COMMIT="$(git rev-parse --short HEAD)"
 docker run -it --rm \
     -v ${PWD}:/app \
