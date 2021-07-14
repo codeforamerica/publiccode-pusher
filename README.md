@@ -73,34 +73,7 @@ The tests on the backend use [Mocha](https://mochajs.org/), [Sinon](https://sino
 
 ### The frontend is deployed to GitHub pages
 
-In the master branch, run the build step:
-
-```bash
-cd client
-rm -r dist
-SOURCE_COMMIT="$(git rev-parse --short HEAD)"
-docker run -it --rm \
-    -v ${PWD}:/app \
-    -v /app/node_modules \
-    --workdir /app \
-    node:12 \
-    bash -c 'npm install && npm run build-prod'
-```
-
-This builds to the `dist/` folder. You will then need to push the `dist/` folder to the `gh-pages` branch:
-
-```bash
-rm -r /tmp/publiccode-pusher-client-dist
-mv dist /tmp/publiccode-pusher-client-dist
-cd ..
-git checkout gh-pages
-git pull
-rm -r *
-cp -r /tmp/publiccode-pusher-client-dist/* .
-git add .
-git commit -m "chore: update build from ${SOURCE_COMMIT}"
-git push
-```
+Just push to the `master` branch and `.github/workflows/publish-site.yaml` will automatically update the `gh-pages` branch
 
 ### The backend is deployed on Google Cloud Platform
 
