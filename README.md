@@ -91,7 +91,7 @@ This builds to the `dist/` folder. You will then need to push the `dist/` folder
 
 ```bash
 rm -r /tmp/publiccode-pusher-client-dist
-cp -r dist /tmp/publiccode-pusher-client-dist
+mv dist /tmp/publiccode-pusher-client-dist
 cd ..
 git checkout gh-pages
 git pull
