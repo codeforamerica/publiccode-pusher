@@ -1,0 +1,26 @@
+name: 'Publish: Frontend Site'
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  HAB_LICENSE: accept-no-persist
+
+
+jobs:
+  release-projections:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Cancel Previous Runs
+      uses: styfle/cancel-workflow-action@0.7.0
+      with:
+        access_token: ${{ github.token }}
+
+    - name: 'Update holobranch: gh-pages'
+      uses: JarvusInnovations/hologit@actions/projector/v1
+      with:
+        holobranch: frontend-site
+        commit-to: gh-pages

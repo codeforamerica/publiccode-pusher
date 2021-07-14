@@ -1,0 +1,13 @@
+[hololens]
+package = "holo/lens-npm-run/12"
+
+[hololens.npm-run]
+install = "npm install --production=false" # devDependencies needed for build-prod
+command = "build-prod"
+output_dir = "dist"
+
+[hololens.input]
+files = "**"
+
+[hololens.output]
+merge = "replace"
