@@ -53,16 +53,14 @@ The frontend app is served at localhost:3000.
 
 # Testing
 
-⚠️ I honestly don't know what the state of the tests is since I switched to the React app. I guess I should try running them.
+We are still reviewing what the state of the tests is since we forked the project (and it was at some point switched to the React app).
 
-The tests on the backend use [Mocha](https://mochajs.org/), [Sinon](https://sinonjs.org), [proxyquire](https://github.com/thlorenz/proxyquire) and [Chai](https://www.chaijs.com). I haven't run them since I switched the frontend, but they should all still work as not much changed on token server. I suppose I should try running them, too.
+The tests on the backend use [Mocha](https://mochajs.org/), [Sinon](https://sinonjs.org), [proxyquire](https://github.com/thlorenz/proxyquire) and [Chai](https://www.chaijs.com). We haven't run them since we took on the project, but they should all still work as not much changed on token server.
 
 # Deployment
 ## The frontend is deployed to GitHub pages
 
-⚠️ This probably changed a lot since I switched to a React app for the frontend. I've only begun to figure that out and update this README.
-
-Run the build step
+In the master branch, run the build step
 ```bash
 cd client
 docker run --rm -it -v ${PWD}:/app -v /app/node_modules --workdir /app node:12 bash -c 'npm install && npm run build-prod'
@@ -70,8 +68,8 @@ docker run --rm -it -v ${PWD}:/app -v /app/node_modules --workdir /app node:12 b
 
 This builds to the `dist/` folder. You will then need to push the `dist/` folder to the `gh-pages` branch
 ```bash
-git worktree add --detach build
-npm run build-prod
+git worktree add --detach build   --- what is this for?
+npm run build-prod         --- isn't this repeating the command "docker..." above?
 cd dist
 git checkout -b gh-pages
 git add .
