@@ -77,7 +77,13 @@ In the master branch, run the build step:
 
 ```bash
 cd client
-docker run --rm -it -v ${PWD}:/app -v /app/node_modules --workdir /app node:12 bash -c 'npm install && npm run build-prod'
+SOURCE_COMMIT="$(git rev-parse --short HEAD)"
+docker run -it --rm \
+    -v ${PWD}:/app \
+    -v /app/node_modules \
+    --workdir /app \
+    node:12 \
+    bash -c 'npm install && npm run build-prod'
 ```
 
 This builds to the `dist/` folder. You will then need to push the `dist/` folder to the `gh-pages` branch:
@@ -91,8 +97,8 @@ git pull
 rm -r *
 cp -r /tmp/publiccode-pusher-client-dist/* .
 git add .
-git commit -m '<message for build commit>'
-git push -u origin gh-pages
+git commit -m "chore: update build from ${SOURCE_COMMIT}"
+git push
 ```
 
 ### The backend is deployed on Google Cloud Platform
