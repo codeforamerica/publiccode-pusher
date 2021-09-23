@@ -3,6 +3,9 @@ import scopes from "../scopes";
 import licenses from "../licenses";
 import langs from "../langs";
 import countries from "../countries";
+import technologies from "../technologies";
+import skills from "../skills";
+import priority_areas from "../priority_areas";
 
 const developmentStatus_list = [
   "concept",
@@ -53,6 +56,65 @@ const fields = async () => {
       required: true
     },
     {
+      title: "genericName",
+      label: "Generic Name",
+      type: "string",
+      description:
+        "This key is the “Generic name”, which refers to the specific category to which the software belongs. You can usually find the generic name in the presentation of the software, when you write: “Software xxx is a yyy” Notable examples include “Text Editor”, “Word Processor”, “Web Browser”, “Chat” and so on… The generic name can be up to 35 characters long.",
+      section: 0,
+      maxLength: 35,
+      required: true,
+      group: "description"
+    },
+    {
+      type: "array",
+      title: "Technologies",
+      label: "Technologies",
+      description:
+        "This key lists the technologies used by this project. It lists software programming languages, platforms, frameworks and tools. These values are useful if someone wants to find projects based on some technology.",
+      examples: ["nodejs", "sql"],
+      items: {
+        type: "string",
+		title: "technology",
+        enum: technologies,
+      },
+      required: true,
+      section: 2,
+      widget: "tags"
+    },
+    {
+      type: "array",
+      title: "roles-needed",
+      label: "Roles Needed",
+      description:
+        "This key specifies which roles are needed in the project. These valules are useful if someone wants to find projects based on roles or skills needed as well as for a project looking for help.",
+      examples: ["fronted developer", "fundraising"],
+      items: {
+        type: "string",
+        title: "roles-needed",
+        enum: skills,
+      },
+      required: false,
+      section: 2,
+      widget: "tags"
+    },
+    {
+      type: "array",
+      title: "priority-area",
+      label: "Priority Area",
+      description:
+        "This key is specific for this organization. Every year the organization decides to focus on a topic that is of particular relevance, a problematic area that the organization believes can attract ideas, contributions and deliver impactful solutions.",
+      examples: ["covid19", "voting rights"],
+      items: {
+        type: "string",
+        title: "priority-area",
+        enum: priority_areas,
+      },
+      required: false,
+      section: 2,
+      widget: "tags"
+    },	
+    {
       title: "releaseDate",
       label: "Release Date",
       type: "string",
@@ -96,17 +158,6 @@ const fields = async () => {
       description:
           "This key is an opportunity to localise the name in a specific language. It contains the (short) public name of the product. It should be the name most people usually refer to the software. In case the software has both an internal “code” name and a commercial name, use the commercial name.",
       section: 0,
-      group: "description"
-    },
-    {
-      title: "genericName",
-      label: "Generic Name",
-      type: "string",
-      description:
-        "This key is the “Generic name”, which refers to the specific category to which the software belongs. You can usually find the generic name in the presentation of the software, when you write: “Software xxx is a yyy” Notable examples include “Text Editor”, “Word Processor”, “Web Browser”, “Chat” and so on… The generic name can be up to 35 characters long.",
-      section: 0,
-      maxLength: 35,
-      required: true,
       group: "description"
     },
     {
@@ -166,7 +217,7 @@ const fields = async () => {
         maxLength: 100,
       },
       section: 4,
-      required: true,
+      required: false,
       group: "description"
     },
     {
@@ -304,7 +355,7 @@ const fields = async () => {
         enum: licenses
       },
       group: "legal",
-      required: true,
+      required: false,
       widget: "combobox"
     },
     {
@@ -466,7 +517,7 @@ const fields = async () => {
         type: "string"
       },
       uniqueItems: true,
-      required: true,
+      required: false,
       requireChildrenIf: [
         {title: "maintenance_contacts", values: ["internal", "community"]},
         {title: "maintenance_contractors", values: ["contract"]}
